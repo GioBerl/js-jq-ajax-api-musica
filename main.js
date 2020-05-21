@@ -13,8 +13,9 @@ $(document).ready(function () {
         url: "https://flynn.boolean.careers/exercises/api/array/music",
         method: "GET",
         success: function (data) {
-            dischi = data.response;
-            //per ogni disco in dischi applico il suo contesto
+            //dischi conterra' l'array di objects
+            var dischi = data.response;
+            //per ogni disco (object) in dischi applico il suo contesto
             dischi.forEach(function (disco) {
                 //a sinistra seleziono il placeholder di handlebars a destra il dato recuperato
                 var context = {
@@ -37,13 +38,13 @@ $(document).ready(function () {
     });
 
     //al cambio di select nascondo tutti i dischi rendo visibili sono quelli con data-genre cercato
-    $(document).on("change", "select", function () {
+    $(".select-container").on("change", "select", function () {
         $(this)
             .closest(".select-container")
             .siblings(".cds-container")
             .find(".cd")
             .hide();
-        changedGenre = this.value; //Rock - Jazz...
+        var changedGenre = $(this).val(); //Rock - Jazz...
         $(this)
             .closest(".select-container")
             .siblings(".cds-container")
