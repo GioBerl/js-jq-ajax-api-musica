@@ -18,19 +18,20 @@
             </div>
         </header>
 
-        <div class="cds-container container">
-            <!-- Disco ad esempio -->
-            <!-- <div class="cd">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/en/9/9f/Ten_Summoner%27s_Tales.jpg"
-                    alt=""
-                />
-                <h3>Ten's Summoners Tales</h3>
-                <span class="author">Sting</span>
-                <span class="year">1993</span>
-            </div> -->
-            <!-- ------------- -->
+        <div class="select-container">
+            <label for="genre">Choose a genre:</label>
+            <select id="genre">
+                <option disabled selected value>
+                    -- select a genre --
+                </option>
+                <option value="Rock">Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Metal">Metal</option>
+            </select>
         </div>
+
+        <div class="cds-container container"></div>
 
         <script id="disco-template" type="text/x-handlebars-template">
             <div class="cd" data-genre="{{genre}}">

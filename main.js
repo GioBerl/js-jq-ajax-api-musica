@@ -16,7 +16,6 @@ $(document).ready(function () {
             dischi = data.response;
             //per ogni disco in dischi applico il suo contesto
             dischi.forEach(function (disco) {
-                console.log(disco.genre);
                 //a sinistra seleziono il placeholder di handlebars a destra il dato recuperato
                 var context = {
                     genre: disco.genre,
@@ -31,6 +30,24 @@ $(document).ready(function () {
                 $(".cds-container").append(newHtml);
             });
         },
-        error: function () {},
+        error: function (request, status, error) {
+            console.log(status); //error
+            console.log(error); //Not Found
+        },
+    });
+
+    //al cambio di select nascondo tutti i dischi rendo visibili sono quelli con data-genre cercato
+    $(document).on("change", "select", function () {
+        $(this)
+            .closest(".select-container")
+            .siblings(".cds-container")
+            .find(".cd")
+            .hide();
+        changedGenre = this.value; //Rock - Jazz...
+        $(this)
+            .closest(".select-container")
+            .siblings(".cds-container")
+            .find(`[data-genre=${changedGenre}]`)
+            .fadeIn(2000);
     });
 });
